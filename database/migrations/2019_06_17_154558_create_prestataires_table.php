@@ -14,7 +14,9 @@ class CreatePrestatairesTable extends Migration
     public function up()
     {
         Schema::create('prestataires', function (Blueprint $table) {
-            $table->bigIncrements('id');      
+            $table->bigIncrements('id');   
+            $table->string('nom');
+            $table->string('prenom');
             $table->timestamps();
         });
     }
