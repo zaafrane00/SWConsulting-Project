@@ -11,7 +11,8 @@ class Admin extends Model
    ];
    public function ville()
    {
-       
+    return $this->hasMany('App\ville');
+   
    }
 }
 

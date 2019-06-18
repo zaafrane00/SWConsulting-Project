@@ -17,6 +17,11 @@ class Prestataire extends Model
     {
         return $this->belongsTo('App\Sous_Categorie','id_sous_categorie');
     }
+    public function Contactpersonne()
+    {
+        
+            return $this->belongsTo('App\Prestataire');
+        }
 
 
     
