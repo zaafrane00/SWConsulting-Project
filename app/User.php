@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'date mariage' ,'image','idville'
     ];
 
     /**
@@ -37,6 +37,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function ville()
+    {
+        return $this->belongsTo('App\ville');
+    }
 
 
     public function favories()
