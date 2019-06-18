@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSousCategoriesTable extends Migration
+class CreateLigneInformationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateSousCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('sous__categories', function (Blueprint $table) {
-            $table->bigIncrements('id_sous_categorie');
+        Schema::create('ligne_informations', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->string('nom');
-            $table->bigInteger('id_categorie')->unsigned();
-            $table->foreign('id_categorie')->references('id_categories')->on('categories')->onDelete('cascade');
             $table->string('icon');
+            $table->string('contenu');
+            $table->bigInteger('id_prestataire')->unsigned();
+            $table->foreign('id_prestataire')->references('id_prestataire')->on('prestataire')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ class CreateSousCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sous__categories');
+        Schema::dropIfExists('ligne_informations');
     }
 }

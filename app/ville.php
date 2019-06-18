@@ -19,9 +19,9 @@ public function User()
 {
     return $this->hasMany('App\User');
 }
-public function admin()
+public function Admin()
 {
-    return $this->belongsTo('App\admin');
+    return $this->belongsTo('App\Admin');
 }
 
 }

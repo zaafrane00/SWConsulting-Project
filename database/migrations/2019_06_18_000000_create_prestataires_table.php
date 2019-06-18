@@ -27,8 +27,6 @@ class CreatePrestatairesTable extends Migration
             $table->bigInteger('id_sous_category')->unsigned();
             $table->foreign('id_sous_category')->references('id_sous_categorie')->on('sous__categories')->onDelete('cascade');
             $table->String('tarification');
-            $table->String('methode_payment');
-            $table->String('ajout_kilometrage');
             $table->timestamps();
         });
     }
