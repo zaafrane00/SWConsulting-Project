@@ -14,10 +14,10 @@ class CreateSousCategoriesTable extends Migration
     public function up()
     {
         Schema::create('sous__categories', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('id_sous_categorie');
             $table->string('nom');
             $table->bigInteger('id_categorie')->unsigned();
-            $table->foreign('id_categorie')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('id_categorie')->references('id_categories')->on('categories')->onDelete('cascade');
             $table->timestamps();
         });
     }
