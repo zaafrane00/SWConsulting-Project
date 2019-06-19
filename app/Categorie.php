@@ -6,8 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Categorie extends Model
 {
-    protected $table = 'Categorie';
-    protected $fillable = ['id_categories', 'nom'];
+    protected $table = 'categories';
+    protected $fillable = ['id_categories', 'nom','icon'];
+    const NAME_ORGANISATION = 'organisation';
+    const NAME_LIEUX = 'lieux';
+    const NAMES = [
+     self::NAME_ORGANISATION,
+     self::NAME_LIEUX,
+    ];
+
 
     public function Sous_Categorie()
     {
