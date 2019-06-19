@@ -14,5 +14,13 @@ class Admin extends Model
     return $this->hasMany('App\ville');
    
    }
+   public function Prestataire()
+   {
+   return $this->hasmany('App\Prestataire');
+   }
+   public function User()
+   {
+   return $this->hasmany('App\User');
+   }
 }
 
