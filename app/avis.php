@@ -6,14 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class avis extends Model
 {
+    protected $table = 'avis';
     protected $fillable = [
         'avis','statut','date','description'
    ];
-   public function coupel()
+   public function user()
    {
-       return $this->belongsTo('App\coupel');
-   }  public function Prestataire()
+       return $this->belongsTo('App\User','id');
+   } 
+    public function Prestataire()
    {
-       return $this->belongsTo('App\Prestataire');
+       return $this->belongsTo('App\Prestataire','id_prestataire');
    }
 }
