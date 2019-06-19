@@ -6,14 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class liste_invite extends Model
 {
+    protected $table = 'liste_invite';
     protected $fillable = [
-        'name', 'prenom', 'email', 'idcouple','idevenement'
+        'name', 'prenom', 'email','telephone'
     ];
 
-    public function user()
-    {
-        return $this->hasmany('App\User');
-    }
+   
     public function evenement()
     {
         return $this->hasmany('App\evenement');
