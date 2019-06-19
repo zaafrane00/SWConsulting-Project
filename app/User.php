@@ -43,9 +43,25 @@ class User extends Authenticatable
     }
 
 
+    public function liste_invite()
+    {
+         return $this->belongsTo('App\liste_invite');
+    }   
     public function favories()
     {
         return $this->hasMany('App\Favorie','id_favorie');
+    }   
+    public function Prestataire()
+    {
+    return $this->hasMany('App\Prestataire');
     }
 
+    public function Admin()
+    {
+         return $this->belongsTo('App\Admin');
+    }  
+    public function avis()
+    {
+         return $this->hasMany('App\avis');
+    }  
 }
