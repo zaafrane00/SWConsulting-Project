@@ -18,8 +18,10 @@ class CreateListeInvitesTable extends Migration
             $table->String('nom');
             $table->String('prenom');
             $table->String('email');
-            $table->bigInteger('idcouple')->unsigned();
-            $table->foreign('idcouple')->references('id')->on('users')->onDelete('cascade');
+            $table->String('telephone');
+            $table->String('position');
+            $table->bigInteger('idmarriage')->unsigned();
+            $table->foreign('idmarriage')->references('id')->on('marriage')->onDelete('cascade');
             $table->timestamps();
         });
     }

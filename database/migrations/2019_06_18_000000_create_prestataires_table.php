@@ -22,11 +22,16 @@ class CreatePrestatairesTable extends Migration
             $table->String('password');
             $table->String('description');
             $table->integer('code_postal');
+            $table->String('att');
+            $table->String('ang');
             $table->bigInteger('idville')->unsigned();
             $table->foreign('idville')->references('id')->on('ville')->onDelete('cascade');
             $table->bigInteger('id_sous_category')->unsigned();
             $table->foreign('id_sous_category')->references('id_sous_categorie')->on('sous__categories')->onDelete('cascade');
             $table->String('tarification');
+            $table->integer('isactive');
+            $table->integer('isvisibile');
+            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -38,6 +43,6 @@ class CreatePrestatairesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('prestataires');
+        Schema::dropIfExists('prestataire');
     }
 }
