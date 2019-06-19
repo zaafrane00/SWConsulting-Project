@@ -18,3 +18,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('get-token','TokenController@getToken');
+
+/* Categories */
+Route::apiResource('category','Category\CategoryController');
+
+
+
