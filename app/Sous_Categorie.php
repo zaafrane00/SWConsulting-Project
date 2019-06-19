@@ -14,5 +14,8 @@ class Sous_Categorie extends Model
         return $this->belongsTo('App\Sous_Categorie', 'id_categorie');
     }
 
-
+    public function Information_Specifique()
+    {
+        return $this->hasmany('App\Sous_Categorie','id');
+    }
 }

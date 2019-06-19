@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Favorie extends Model
 {
+    protected $table = 'Favorie';
     protected $fillable = [
         'id_user','id_prestataire'
    ];
@@ -13,7 +14,7 @@ class Favorie extends Model
 
    public function user()
    {
-       return $this->hasMany('App\User');
+       return $this->belongsTo('App\User');
    }
    
 

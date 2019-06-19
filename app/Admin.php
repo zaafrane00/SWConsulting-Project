@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Admin extends Model
 {
+    protected $table = 'Admin';
     protected $fillable = [
         'nom','prenom','email','password','telephone'
    ];
@@ -14,13 +15,6 @@ class Admin extends Model
     return $this->hasMany('App\ville');
    
    }
-   public function Prestataire()
-   {
-   return $this->hasmany('App\Prestataire');
-   }
-   public function User()
-   {
-   return $this->hasmany('App\User');
-   }
+ 
 }
 
