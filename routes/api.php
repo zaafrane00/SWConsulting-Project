@@ -23,7 +23,11 @@ Route::post('get-token','TokenController@getToken');
 /* Categories */
 Route::apiResource('categorie','Category\CategoryController');
 /* Sous-Categories */
-//Route::apiResource('sous_categorie','Category\Sous_CategoryController');
+Route::apiResource('sous_categorie','Category\Sous_CategoryController');
+/* contact peronne (prestataire) */
+//Route::apiResource('contact_prestatire','Prestataire\ContactprestataireController');
+/* Prestatire */
+Route::apiResource('prestataire','Prestataire\PrestataireController');
 
 
 

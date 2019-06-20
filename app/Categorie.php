@@ -15,6 +15,8 @@ class Categorie extends Model
      self::NAME_LIEUX,
     ];*/
 
+    protected $primaryKey = 'id_categories';
+
 
     public function Sous_Categorie()
     {

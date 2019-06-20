@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Category;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Illuminate\Validation\Rule;
-use App\Categorie;
-class CategoryController extends Controller
+use App\Contactpersonne;
+
+class ContactprestataireController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,13 +14,11 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $category = Categorie::all();
+        $contact = Contactpersonne::all();
         return response()->json($category);
-
     }
 
-   
-
+  
     /**
      * Store a newly created resource in storage.
      *
@@ -32,29 +29,39 @@ class CategoryController extends Controller
     {
         $this->validate($request,[
         'nom'=>['required',/*Rule::in(Categorie::NAMES)*/],
-         'icon'=>['required']
+         'email'=>['required'],
+         'telephone'=>['required'],
+         'telephoneportable'=>['required'],
+         'telephonefax'=>['required'],
+         'siteinternet'=>['required'],
+         'idprestataire'=>['required'],
         ]);
 
-       $nom=$request['nom'];
-       $icon=$request['icon'];
+       $_nom=$request['nom'];
+       $_email=$request['email'];
+       $_telephone=$request['telephone'];
+       $_telephoneportable=$request['telephoneportable'];
+       $_telephonefax=$request['telephonefax'];
+       $_siteinternet=$request['siteinternet'];
+       $_idprestataire=$request['idprestataire'];
 
 
         // save in DB 
-        $category  = new Categorie([
-            'nom'=>$nom,
-            'icon'=>$icon
+        $contact  = new Contactpersonne([
+            'nom'=>$_nom,
+            'email'=>$_email,
+            'telephone'=>$_telephone,
+            'telephoneportable'=>$_telephoneportable,
+            'telephonefax'=>$_telephonefax,
+            'siteinternet'=>$_siteinternet,
+            'idprestataire'=>$_idprestataire,
         ]);
         //$category->nom = $request->input('nom');
         //$category->icon = $request->input('icon');
-        $category->saveOrFail();
+        $contact->saveOrFail();
         return 'saved'  ;
          
-        //if($category->save()){}
-
-
-
     }
-
 
 
 
@@ -67,23 +74,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
-        'nom'=>['required',/*Rule::in(Categorie::NAMES)*/],
-         'icon'=>['required']
-        ]);
-
-        $category = Categorie::findOrFail($id);
-       
-
-        $nom=$request['nom'];
-        $icon=$request['icon'];
-
-        $category->nom=$nom;
-        $category->icon=$icon;
-
-        $category->saveOrFail();
-        return 'saved'  ;
- 
+        //
     }
 
     /**
@@ -94,8 +85,6 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //$category = Categorie::findOrFail($id);
-        $category=Categorie::where('id_categories',$id)->delete();
-        return 'deleted';
+        //
     }
 }

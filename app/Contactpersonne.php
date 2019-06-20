@@ -8,7 +8,7 @@ class Contactpersonne extends Model
 {
     protected $table = 'Contactpersonne';
     protected $fillable = [
-        'nom','email','telephone','telephoneportable','telephonefax','siteinternet'
+        'id','nom','email','telephone','telephoneportable','telephonefax','siteinternet','idprestataire'
    ];
    public function Prestataire()
 {

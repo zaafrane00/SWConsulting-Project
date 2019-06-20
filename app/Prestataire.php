@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Prestataire extends Model
 {
 
-    protected $table = 'Prestataire';
+    protected $table = 'prestataire';
     protected $fillable = ['id_prestataire', 'nom','prenom','telephone','email','password','description',
     'code_postal','att','ang','tarification','methode_payment','ajout_kilometrage','isactive'
-    ,'isvisibile','service','discroption_service'
+    ,'isvisibile'
 ];
-    
+protected $primaryKey = 'id_prestataire';
 
 
     public function Sous_Categorie()
