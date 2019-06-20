@@ -17,10 +17,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+//passport
 Route::post('get-token','TokenController@getToken');
 
 /* Categories */
-Route::apiResource('category','Category\CategoryController');
+Route::apiResource('categorie','Category\CategoryController');
+/* Sous-Categories */
+//Route::apiResource('sous_categorie','Category\Sous_CategoryController');
 
 
 

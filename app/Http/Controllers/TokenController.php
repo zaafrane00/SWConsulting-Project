@@ -16,11 +16,11 @@ class TokenController extends Controller
         ]);
          
 
-$response = $http->post('http://dev.apicourtizen/oauth/token', [
+$response = $http->post('http://dev.marriage/oauth/token', [
     'form_params' => [
         'grant_type' => 'password',
-        'client_id' => '2',
-        'client_secret' => 'Lh2cCaPKn5ouoaYhBl5tk70luI4Jct0ojmNqRJ1y',
+        'client_id' => '1',
+        'client_secret' => '5eKnoutqEkFNEPVAZUOileRXjcDj6JLjE77VirDI',
         'username' => $request->input('user_name'),
         'password' =>  $request->input('password'),
         'scope' => '*',
