@@ -9,7 +9,8 @@ class Prestataire extends Model
 
     protected $table = 'Prestataire';
     protected $fillable = ['id_prestataire', 'nom','prenom','telephone','email','password','description',
-    'code_postal','att','ang','tarification','methode_payment','ajout_kilometrage','isactive','isvisibile'
+    'code_postal','att','ang','tarification','methode_payment','ajout_kilometrage','isactive'
+    ,'isvisibile','service','discroption_service'
 ];
     
 

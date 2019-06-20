@@ -4,9 +4,8 @@ namespace App\Http\Controllers\Category;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Validation\Rule;
-use App\Categorie;
-class CategoryController extends Controller
+
+class Sous_CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,13 +14,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $category = Categorie::all();
-        return response()->json($category);
-
+        //
     }
 
-   
-
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -31,32 +27,29 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-        'nom'=>['required',/*Rule::in(Categorie::NAMES)*/],
+         'nom'=>['required',Rule::in(Categorie::NAMES)],
          'icon'=>['required']
         ]);
-
-       $nom=$request['nom'];
-       $icon=$request['icon'];
-
-
         // save in DB 
-        $category  = new Categorie([
-            'nom'=>$nom,
-            'icon'=>$icon
-        ]);
-        //$category->nom = $request->input('nom');
-        //$category->icon = $request->input('icon');
+        $category  = new Categorie();
+        $category->nom = $request->input('nom');
+        $category->icon = $request->input('icon');
         $category->saveOrFail();
-        return 'saved'  ;
-         
-        //if($category->save()){}
-
-
-
+        return 'saved' ;
     }
 
 
-
+  
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
 
     /**
      * Update the specified resource in storage.
