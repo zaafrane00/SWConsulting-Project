@@ -14,7 +14,8 @@ class PaysController extends Controller
      */
     public function index()
     {
-        //
+        $payss = pays::all();
+        return response()->json($payss);
     }
 
     /**

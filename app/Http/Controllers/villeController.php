@@ -13,7 +13,8 @@ class villeController extends Controller
      */
     public function index()
     {
-        //
+      $ville=ville::all();
+      return response()->json($ville);
     }
 
     /**
@@ -58,7 +59,19 @@ class villeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        $this->validate($request,[
+        'nom'=>['required'],
+        ]);
+
+        $ville = ville::findOrFail($id);
+       
+
+        $nom=$request['nom'];
+
+        $ville->nom=$nom;
+
+        $ville->saveOrFail();
+        return 'saved'  ;
     }
 
     /**
