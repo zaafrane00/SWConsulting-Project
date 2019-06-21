@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use App\pays;
-use App\ville;
-
-class PaysController extends Controller
+use App\marriage;
+class marriageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +13,8 @@ class PaysController extends Controller
      */
     public function index()
     {
-        $payss = pays::all();
-        return response()->json($payss);
+        $marriage = marriage::all();
+        return response()->json($marriage);
     }
 
     /**
@@ -27,7 +24,7 @@ class PaysController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -41,6 +38,11 @@ class PaysController extends Controller
         {
             $this->validate($request,[
              'nom'=>['required'],
+             'description'=>['required'],
+             'date_marriage'=>['required'],
+
+            
+
                         ]);
             // save in DB 
             $pays  = new pays();
@@ -69,7 +71,7 @@ class PaysController extends Controller
      */
     public function edit($id)
     {
-        
+        //
     }
 
     /**
@@ -81,19 +83,7 @@ class PaysController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
-        'nom'=>['required',/*Rule::in(Categorie::NAMES)*/],
-        ]);
-
-        $pays = pays::findOrFail($id);
-       
-
-        $nom=$request['nom'];
-
-        $pays->nom=$nom;
-
-        $pays->saveOrFail();
-        return 'saved'  ;
+        //
     }
 
     /**
@@ -103,20 +93,7 @@ class PaysController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {    
-         $s_pays=pays::findOrFail($id);
-        $s_ville=ville::where('idpays','=',$id)->get();
- 
-        if(count($s_ville)>0)
-        {
-            return response()->json($s_pays,406);
-        } 
-        
-        else{
-       
-        $pays=pays::where('id','=',$id)->delete();
-
-        return response()->json($s_pays,200);
-    }
+    {
+        //
     }
 }

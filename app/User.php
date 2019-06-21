@@ -16,8 +16,16 @@ class User extends Authenticatable
      *
      * @var array
      */
+    
+       const NAME_COUPLE='couple';
+       const NAME_PRESTATAIRE='prestataire';
+       const role=[
+        self :: NAME_COUPLE,
+        self :: NAME_PRESTATAIRE
+       ];
+  
     protected $fillable = [
-        'name', 'email', 'password' ,'image','idville','isactive'
+        'name', 'email', 'password' ,'image','idville','isactive','role'
     ];
 
     /**

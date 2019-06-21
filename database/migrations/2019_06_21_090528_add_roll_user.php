@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddUser extends Migration
+class AddRollUser extends Migration
 {
     /**
      * Run the migrations.
@@ -15,6 +15,7 @@ class AddUser extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->String('image');
+            $table->String('role');
             $table->bigInteger('idville')->unsigned();
             $table->foreign('idville')->references('id')->on('ville')->onDelete('cascade');
 
@@ -28,12 +29,11 @@ class AddUser extends Migration
      */
     public function down()
     {
+        Schema::table('users', function (Blueprint $table)
         {
-            Schema::table('users', function (Blueprint $table) {
-                $table->dropColumn('date mariage');
-                $table->dropColumn('image');
-                $table->dropColumn('idville');
-            });
-        }
+            $table->dropColumn('role');
+            $table->dropColumn('image');
+            $table->dropColumn('idville');
+        });
     }
 }
