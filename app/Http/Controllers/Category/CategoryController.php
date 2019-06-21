@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Validation\Rule;
+use App\Sous_Categorie;
 use App\Categorie;
 class CategoryController extends Controller
 {
@@ -47,7 +48,8 @@ class CategoryController extends Controller
         //$category->nom = $request->input('nom');
         //$category->icon = $request->input('icon');
         $category->saveOrFail();
-        return 'saved'  ;
+        return response()->json($category,201);
+        
          
         //if($category->save()){}
 
@@ -75,6 +77,7 @@ class CategoryController extends Controller
         $category = Categorie::findOrFail($id);
        
 
+
         $nom=$request['nom'];
         $icon=$request['icon'];
 
@@ -82,7 +85,8 @@ class CategoryController extends Controller
         $category->icon=$icon;
 
         $category->saveOrFail();
-        return 'saved'  ;
+        return response()->json($category,202);
+        
  
     }
 
@@ -95,7 +99,18 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         //$category = Categorie::findOrFail($id);
-        $category=Categorie::where('id_categories',$id)->delete();
-        return 'deleted';
+        $s_category = Sous_Categorie::where('id_categorie','=',$id)->get();
+        if(count($s_category)){
+            return response()->json($category,406);
+           
+        }
+         else{
+        $category = Categorie::findOrFail($id);
+        $category->delete();
+       return response()->json($category,200);
+       
+
+         }
+         
     }
 }

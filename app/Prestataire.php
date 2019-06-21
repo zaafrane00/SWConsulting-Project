@@ -8,9 +8,10 @@ class Prestataire extends Model
 {
 
     protected $table = 'prestataire';
-    protected $fillable = ['id_prestataire', 'nom','prenom','telephone','email','password','description',
-    'code_postal','att','ang','tarification','methode_payment','ajout_kilometrage','isactive'
-    ,'isvisibile'
+    protected $fillable = ['id_prestataire', 'nom','prenom','telephone','email',
+    'password','description',
+    'code_postal','att','ang','tarification','methode_payment','isactive','idville'
+    ,'isvisibile','id_sous_category'
 ];
 protected $primaryKey = 'id_prestataire';
 
