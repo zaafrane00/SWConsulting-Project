@@ -21,7 +21,7 @@ class CategoryController extends Controller
 
     }
 
-   
+
 
     /**
      * Store a newly created resource in storage.
@@ -40,7 +40,7 @@ class CategoryController extends Controller
        $icon=$request['icon'];
 
 
-        // save in DB 
+        // save in DB
         $category  = new Categorie([
             'nom'=>$nom,
             'icon'=>$icon
@@ -49,8 +49,8 @@ class CategoryController extends Controller
         //$category->icon = $request->input('icon');
         $category->saveOrFail();
         return response()->json($category,201);
-        
-         
+
+
         //if($category->save()){}
 
 
@@ -75,7 +75,7 @@ class CategoryController extends Controller
         ]);
 
         $category = Categorie::findOrFail($id);
-       
+
 
 
         $nom=$request['nom'];
@@ -86,8 +86,8 @@ class CategoryController extends Controller
 
         $category->saveOrFail();
         return response()->json($category,202);
-        
- 
+
+
     }
 
     /**
@@ -102,15 +102,12 @@ class CategoryController extends Controller
         $s_category = Sous_Categorie::where('id_categorie','=',$id)->get();
         if(count($s_category)){
             return response()->json($category,406);
-           
         }
          else{
         $category = Categorie::findOrFail($id);
         $category->delete();
-       return response()->json($category,200);
-       
-
+         return response()->json($category,200);
          }
-         
+
     }
 }

@@ -39,20 +39,16 @@ class marriageController extends Controller
     public function store(Request $request)
     {
         {
-     
+
             $this->validate($request,[
              'id_user'=>['required'],
              'description'=>['required'],
              'date_marriage'=>['required'],
              'id_lieu'=>['required'],
-             
 
+             ]);
 
-            
-
-                        ]);
-
-            // save in DB 
+            // save in DB
             $marriage  = new marriage();
             $marriage->id_user = $request->input('id_user');
             $marriage->description = $request->input('description');
@@ -103,7 +99,7 @@ class marriageController extends Controller
         ]);
 
         $marriage = marriage::findOrFail($id);
-       
+
 
         $id_user=$request['id_user'];
         $description=$request['description'];
@@ -113,11 +109,11 @@ class marriageController extends Controller
         $marriage->description = $description;
         $marriage->date_marriage = $date_marriage;
         $marriage->id_lieu = $id_lieu;
-    
+
 
         $marriage->saveOrFail();
         return response()->json($marriage, Response::HTTP_OK);
-    
+
     }
 
     /**

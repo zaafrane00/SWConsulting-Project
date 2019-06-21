@@ -24,7 +24,7 @@ class villeController extends Controller
      */
     public function create()
     {
-       
+
     }
 
     /**
@@ -39,7 +39,7 @@ class villeController extends Controller
             'nom'=>['required'],
             'idpays'=>['required'],
                        ]);
-           // save in DB 
+           // save in DB
            $ville  = new ville();
            $ville->nom = $request->input('nom');
            $ville->idpays = $request->input('idpays');
@@ -48,7 +48,7 @@ class villeController extends Controller
            return 'saved' ;
     }
 
-  
+
 
     /**
      * Update the specified resource in storage.
@@ -64,7 +64,7 @@ class villeController extends Controller
         ]);
 
         $ville = ville::findOrFail($id);
-       
+
 
         $nom=$request['nom'];
 

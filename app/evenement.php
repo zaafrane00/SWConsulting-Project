@@ -8,17 +8,18 @@ class evenement extends Model
 {
     protected $table = 'evenement';
     protected $fillable = [
-        'nom','email','telephone','telephoneportable','telephonefax','siteinternet'
+        'id','nom_evenement','type_evenement','date_debut','heure_debut','date_fin','ville',
+        'addresse', 'description_evenement', 'idprestataire','idmarriage'
    ];
 
    public function Prestataire()
    {
        return $this->belongsTo('App\Prestataire','id_prestataire');
-   } 
+   }
 
    //manich mthabt mineha
    public function marriage()
    {
-       return $this->belongsTo('App\marriage','id');
-   } 
+       return $this->hasOne('App\marriage','id');
+   }
 }

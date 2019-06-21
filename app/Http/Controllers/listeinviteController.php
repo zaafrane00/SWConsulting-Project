@@ -31,9 +31,11 @@ class listinviteController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'telephone'=>['required'],
                        ]);
-           // save in DB 
+           // save in DB
            $pays  = new pays();
            $pays->nom = $request->input('nom');
+           $ville->nom = $request->input('prenom');
+
            $pays->saveOrFail();
            return 'saved' ;
     }
