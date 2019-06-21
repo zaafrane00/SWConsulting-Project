@@ -46,7 +46,7 @@ class ContactprestataireController extends Controller
          'siteinternet'=>['required'],
          'idprestataire'=>['required'],
         ]);
-        
+
        $_nom=$request['nom'];
        $_email=$request['email'];
        $_telephone=$request['telephone'];
@@ -55,7 +55,7 @@ class ContactprestataireController extends Controller
        $_siteinternet=$request['siteinternet'];
        $_idprestataire=$request['idprestataire'];
 
-           // save in DB 
+           // save in DB
            $contact  = new Contactpersonne([
             'nom'=>$_nom,
             'email'=>$_email,
@@ -101,7 +101,7 @@ class ContactprestataireController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $this->validate($request,[
             'nom'=>['required'],
             'email'=>['required'],
@@ -111,7 +111,7 @@ class ContactprestataireController extends Controller
             'siteinternet'=>['required'],
             'idprestataire'=>['required'],
            ]);
-           
+
           $_nom=$request['nom'];
           $_email=$request['email'];
           $_telephone=$request['telephone'];
@@ -119,7 +119,8 @@ class ContactprestataireController extends Controller
           $_telephonefax=$request['telephonefax'];
           $_siteinternet=$request['siteinternet'];
           $_idprestataire=$request['idprestataire'];
-   
+
+          $contact = Contactpersonne::findOrFail($id);
           $contact->nom=$_nom;
           $contact->email=$_email;
           $contact->telephone=$_telephone;
@@ -128,7 +129,7 @@ class ContactprestataireController extends Controller
           $contact->siteinternet=$_siteinternet;
           $contact->idprestataire=$_idprestataire;
 
-          $contact = Contactpersonne::findOrFail($id);
+
           $contact->saveOrFail();
           return response()->json($contact,202);
 
@@ -142,6 +143,9 @@ class ContactprestataireController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        $contact = Contactpersonne::findOrFail($id);
+        $contact->delete();
+        return response()->json($contact,200);
     }
 }

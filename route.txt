@@ -4,15 +4,30 @@
 |        | GET|HEAD  | /                                           |                                   | Closure                                                                   | web          |
 |        | POST      | api/categorie                               | categorie.store                   | App\Http\Controllers\Category\CategoryController@store                    | api          |
 |        | GET|HEAD  | api/categorie                               | categorie.index                   | App\Http\Controllers\Category\CategoryController@index                    | api          |
+<<<<<<< HEAD
+|        | DELETE    | api/categorie/{categorie}                   | categorie.destroy                 | App\Http\Controllers\Category\CategoryController@destroy                  | api          |
+|        | PUT|PATCH | api/categorie/{categorie}                   | categorie.update                  | App\Http\Controllers\Category\CategoryController@update                   | api          |
+|        | GET|HEAD  | api/categorie/{categorie}                   | categorie.show                    | App\Http\Controllers\Category\CategoryController@show                     | api          |
+|        | GET|HEAD  | api/contact_prestatire                      | contact_prestatire.index          | App\Http\Controllers\Prestataire\ContactprestataireController@index       | api          |
+|        | POST      | api/contact_prestatire                      | contact_prestatire.store          | App\Http\Controllers\Prestataire\ContactprestataireController@store       | api          |
+=======
 |        | GET|HEAD  | api/categorie/{categorie}                   | categorie.show                    | App\Http\Controllers\Category\CategoryController@show                     | api          |
 |        | DELETE    | api/categorie/{categorie}                   | categorie.destroy                 | App\Http\Controllers\Category\CategoryController@destroy                  | api          |
 |        | PUT|PATCH | api/categorie/{categorie}                   | categorie.update                  | App\Http\Controllers\Category\CategoryController@update                   | api          |
 |        | POST      | api/contact_prestatire                      | contact_prestatire.store          | App\Http\Controllers\Prestataire\ContactprestataireController@store       | api          |
 |        | GET|HEAD  | api/contact_prestatire                      | contact_prestatire.index          | App\Http\Controllers\Prestataire\ContactprestataireController@index       | api          |
+>>>>>>> b2979556e2f1596b6fa0eef9c16110331bb9bf8f
 |        | DELETE    | api/contact_prestatire/{contact_prestatire} | contact_prestatire.destroy        | App\Http\Controllers\Prestataire\ContactprestataireController@destroy     | api          |
 |        | PUT|PATCH | api/contact_prestatire/{contact_prestatire} | contact_prestatire.update         | App\Http\Controllers\Prestataire\ContactprestataireController@update      | api          |
 |        | GET|HEAD  | api/contact_prestatire/{contact_prestatire} | contact_prestatire.show           | App\Http\Controllers\Prestataire\ContactprestataireController@show        | api          |
 |        | POST      | api/get-token                               |                                   | App\Http\Controllers\TokenController@getToken                             | api          |
+<<<<<<< HEAD
+|        | GET|HEAD  | api/pays                                    | pays.index                        | App\Http\Controllers\PaysController@index                                 | api          |
+|        | POST      | api/pays                                    | pays.store                        | App\Http\Controllers\PaysController@store                                 | api          |
+|        | DELETE    | api/pays/{pay}                              | pays.destroy                      | App\Http\Controllers\PaysController@destroy                               | api          |
+|        | PUT|PATCH | api/pays/{pay}                              | pays.update                       | App\Http\Controllers\PaysController@update                                | api          |
+|        | GET|HEAD  | api/pays/{pay}                              | pays.show                         | App\Http\Controllers\PaysController@show                                  | api          |
+=======
 |        | POST      | api/marriage                                | marriage.store                    | App\Http\Controllers\marriageController@store                             | api          |
 |        | GET|HEAD  | api/marriage                                | marriage.index                    | App\Http\Controllers\marriageController@index                             | api          |
 |        | DELETE    | api/marriage/{marriage}                     | marriage.destroy                  | App\Http\Controllers\marriageController@destroy                           | api          |
@@ -23,6 +38,7 @@
 |        | GET|HEAD  | api/pays/{pay}                              | pays.show                         | App\Http\Controllers\PaysController@show                                  | api          |
 |        | PUT|PATCH | api/pays/{pay}                              | pays.update                       | App\Http\Controllers\PaysController@update                                | api          |
 |        | DELETE    | api/pays/{pay}                              | pays.destroy                      | App\Http\Controllers\PaysController@destroy                               | api          |
+>>>>>>> b2979556e2f1596b6fa0eef9c16110331bb9bf8f
 |        | GET|HEAD  | api/prestataire                             | prestataire.index                 | App\Http\Controllers\Prestataire\PrestataireController@index              | api          |
 |        | POST      | api/prestataire                             | prestataire.store                 | App\Http\Controllers\Prestataire\PrestataireController@store              | api          |
 |        | GET|HEAD  | api/prestataire/{prestataire}               | prestataire.show                  | App\Http\Controllers\Prestataire\PrestataireController@show               | api          |
@@ -30,15 +46,28 @@
 |        | DELETE    | api/prestataire/{prestataire}               | prestataire.destroy               | App\Http\Controllers\Prestataire\PrestataireController@destroy            | api          |
 |        | GET|HEAD  | api/sous_categorie                          | sous_categorie.index              | App\Http\Controllers\Category\Sous_CategoryController@index               | api          |
 |        | POST      | api/sous_categorie                          | sous_categorie.store              | App\Http\Controllers\Category\Sous_CategoryController@store               | api          |
+<<<<<<< HEAD
+|        | PUT|PATCH | api/sous_categorie/{sous_categorie}         | sous_categorie.update             | App\Http\Controllers\Category\Sous_CategoryController@update              | api          |
+|        | DELETE    | api/sous_categorie/{sous_categorie}         | sous_categorie.destroy            | App\Http\Controllers\Category\Sous_CategoryController@destroy             | api          |
+=======
+>>>>>>> b2979556e2f1596b6fa0eef9c16110331bb9bf8f
 |        | GET|HEAD  | api/sous_categorie/{sous_categorie}         | sous_categorie.show               | App\Http\Controllers\Category\Sous_CategoryController@show                | api          |
 |        | PUT|PATCH | api/sous_categorie/{sous_categorie}         | sous_categorie.update             | App\Http\Controllers\Category\Sous_CategoryController@update              | api          |
 |        | DELETE    | api/sous_categorie/{sous_categorie}         | sous_categorie.destroy            | App\Http\Controllers\Category\Sous_CategoryController@destroy             | api          |
 |        | GET|HEAD  | api/user                                    |                                   | Closure                                                                   | api,auth:api |
+<<<<<<< HEAD
+|        | GET|HEAD  | api/ville                                   | ville.index                       | App\Http\Controllers\villeController@index                                | api          |
+|        | POST      | api/ville                                   | ville.store                       | App\Http\Controllers\villeController@store                                | api          |
+|        | PUT|PATCH | api/ville/{ville}                           | ville.update                      | App\Http\Controllers\villeController@update                               | api          |
+|        | DELETE    | api/ville/{ville}                           | ville.destroy                     | App\Http\Controllers\villeController@destroy                              | api          |
+|        | GET|HEAD  | api/ville/{ville}                           | ville.show                        | App\Http\Controllers\villeController@show                                 | api          |
+=======
 |        | POST      | api/ville                                   | ville.store                       | App\Http\Controllers\villeController@store                                | api          |
 |        | GET|HEAD  | api/ville                                   | ville.index                       | App\Http\Controllers\villeController@index                                | api          |
 |        | GET|HEAD  | api/ville/{ville}                           | ville.show                        | App\Http\Controllers\villeController@show                                 | api          |
 |        | PUT|PATCH | api/ville/{ville}                           | ville.update                      | App\Http\Controllers\villeController@update                               | api          |
 |        | DELETE    | api/ville/{ville}                           | ville.destroy                     | App\Http\Controllers\villeController@destroy                              | api          |
+>>>>>>> b2979556e2f1596b6fa0eef9c16110331bb9bf8f
 |        | GET|HEAD  | home                                        | home                              | App\Http\Controllers\HomeController@index                                 | web,auth     |
 |        | POST      | login                                       |                                   | App\Http\Controllers\Auth\LoginController@login                           | web,guest    |
 |        | GET|HEAD  | login                                       | login                             | App\Http\Controllers\Auth\LoginController@showLoginForm                   | web,guest    |
