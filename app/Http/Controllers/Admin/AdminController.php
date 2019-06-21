@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Admin;
 
 class AdminController extends Controller
 {
@@ -35,7 +36,31 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        {
+     
+            $this->validate($request,[
+             'nom'=>['required'],
+             'prenom'=>['required'],
+             'email'=>['required'],
+             'password'=>['required'],
+             'telephone'=>['required'],
+             
+
+
+            
+
+                        ]);
+
+            // save in DB 
+            $admin  = new admin();
+            $admin->nom = $request->input('nom');
+            $admin->prenom = $request->input('prenom');
+            $admin->email = $request->input('email');
+            $admin->password = $request->input('password');
+            $telephone->password = $request->input('telephone');
+            $admin->saveOrFail();
+            return response()->json($admin, Response::HTTP_OK);
+        }
     }
 
     /**
