@@ -22,6 +22,8 @@ Route::post('get-token','TokenController@getToken');
 
 /* Categories */
 Route::apiResource('categorie','Category\CategoryController');
+Route::apiResource('pays','PaysController');
+Route::apiResource('ville','villeController');
 /* Sous-Categories */
 Route::apiResource('sous_categorie','Category\Sous_CategoryController');
 /* contact peronne (prestataire) */
