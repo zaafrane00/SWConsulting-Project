@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Response;
 use App\marriage;
+
 class marriageController extends Controller
 {
     /**
@@ -36,19 +39,28 @@ class marriageController extends Controller
     public function store(Request $request)
     {
         {
+     
             $this->validate($request,[
-             'nom'=>['required'],
+             'id_user'=>['required'],
              'description'=>['required'],
              'date_marriage'=>['required'],
+             'id_lieu'=>['required'],
+             
+
 
             
 
                         ]);
+
             // save in DB 
-            $pays  = new pays();
-            $pays->nom = $request->input('nom');
-            $pays->saveOrFail();
-            return response()->json($pays, Response::HTTP_OK);
+            $marriage  = new marriage();
+            $marriage->id_user = $request->input('id_user');
+            $marriage->description = $request->input('description');
+            $marriage->date_marriage = $request->input('date_marriage');
+            $marriage->id_lieu = $request->input('id_lieu');
+
+            $marriage->saveOrFail();
+            return response()->json($marriage, Response::HTTP_OK);
         }
     }
 
@@ -83,7 +95,29 @@ class marriageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'id_user'=>['required'],
+            'description'=>['required'],
+            'date_marriage'=>['required'],
+            'id_lieu'=>['required'],
+        ]);
+
+        $marriage = marriage::findOrFail($id);
+       
+
+        $id_user=$request['id_user'];
+        $description=$request['description'];
+        $date_marriage=$request['date_marriage'];
+        $id_lieu=$request['id_lieu'];
+        $marriage->id_user = $id_user;
+        $marriage->description = $description;
+        $marriage->date_marriage = $date_marriage;
+        $marriage->id_lieu = $id_lieu;
+    
+
+        $marriage->saveOrFail();
+        return response()->json($marriage, Response::HTTP_OK);
+    
     }
 
     /**
@@ -94,6 +128,8 @@ class marriageController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $marriage = marriage::findOrFail($id);
+        $deleted =  $marriage->delete();
+        return response()->json($marriage->delete() ?  200 : 400);
     }
 }
