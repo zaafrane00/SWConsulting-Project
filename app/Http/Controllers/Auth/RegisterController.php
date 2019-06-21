@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-
+ use Illuminate\Validation\Rule;
 class RegisterController extends Controller
 {
     /*
@@ -52,6 +52,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'role'=>['required',Rule::in(User::role )]
         ]);
     }
 
@@ -62,7 +63,7 @@ class RegisterController extends Controller
      * @return \App\User
      */
     protected function create(array $data)
-    {
+    {    
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -70,6 +71,7 @@ class RegisterController extends Controller
             'isactive' => $data['isactive'],
             'image' => $data['image'],
             'idville' => $data['idville'],
+            'role' => $data['role'],
           
         ]);
     }
