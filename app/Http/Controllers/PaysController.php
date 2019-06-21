@@ -27,7 +27,7 @@ class PaysController extends Controller
      */
     public function create()
     {
-        
+
     }
 
     /**
@@ -42,7 +42,7 @@ class PaysController extends Controller
             $this->validate($request,[
              'nom'=>['required'],
                         ]);
-            // save in DB 
+            // save in DB
             $pays  = new pays();
             $pays->nom = $request->input('nom');
             $pays->saveOrFail();
@@ -69,7 +69,7 @@ class PaysController extends Controller
      */
     public function edit($id)
     {
-        
+
     }
 
     /**
@@ -86,7 +86,7 @@ class PaysController extends Controller
         ]);
 
         $pays = pays::findOrFail($id);
-       
+
 
         $nom=$request['nom'];
 
@@ -103,17 +103,17 @@ class PaysController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {    
+    {
          $s_pays=pays::findOrFail($id);
         $s_ville=ville::where('idpays','=',$id)->get();
- 
+
         if(count($s_ville)>0)
         {
             return response()->json($s_pays,406);
-        } 
-        
+        }
+
         else{
-       
+
         $pays=pays::where('id','=',$id)->delete();
 
         return response()->json($s_pays,200);

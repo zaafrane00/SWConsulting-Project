@@ -14,7 +14,7 @@ class TokenController extends Controller
             'password'=>'required|min:6'
 
         ]);
-         
+
 
 $response = $http->post('http://dev.marriage/oauth/token', [
     'form_params' => [
