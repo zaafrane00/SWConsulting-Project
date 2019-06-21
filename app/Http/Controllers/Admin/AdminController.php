@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\liste_invite;
+use App\Http\Controllers\Controller;
 
-class listinviteController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,7 @@ class listinviteController extends Controller
      */
     public function index()
     {
-        $liste = liste_invite::all();
-        return response()->json($liste);
+        //
     }
 
     /**
@@ -25,17 +24,7 @@ class listinviteController extends Controller
      */
     public function create()
     {
-        $this->validate($request,[
-            'nom'=>['required'],
-            'prenom'=>['required'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'telephone'=>['required'],
-                       ]);
-           // save in DB 
-           $pays  = new pays();
-           $pays->nom = $request->input('nom');
-           $pays->saveOrFail();
-           return 'saved' ;
+        //
     }
 
     /**
