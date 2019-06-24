@@ -5,7 +5,8 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class message extends Model
-{
+{   
+    protected $table = 'messages';
     protected $fillable = ['id','titre','contenue','ref_expiditeur','ref_destintatire','idprestataire','id_user'];
     public function Prestataire()
     {

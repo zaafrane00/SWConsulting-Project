@@ -8,7 +8,7 @@ class avis extends Model
 {
     protected $table = 'avis';
     protected $fillable = [
-        'avis','statut','date','description'
+       'id','avis','statut','date','description','id_prestataire','idcouple'
    ];
    public function user()
    {

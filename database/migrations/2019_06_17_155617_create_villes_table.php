@@ -30,6 +30,6 @@ class CreateVillesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ville');
+      //  Schema::dropIfExists('ville');
     }
 }

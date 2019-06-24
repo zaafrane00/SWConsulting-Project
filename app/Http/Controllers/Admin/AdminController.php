@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Response;
 use App\Admin;
 
 class AdminController extends Controller
@@ -15,7 +17,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-        //
+        $liste = admin::all();
+        return response()->json($liste);
     }
 
     /**
@@ -41,8 +44,8 @@ class AdminController extends Controller
             $this->validate($request,[
              'nom'=>['required'],
              'prenom'=>['required'],
-             'email'=>['required'],
-             'password'=>['required'],
+             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+             'password' => ['required'],
              'telephone'=>['required'],
              
 
@@ -56,8 +59,8 @@ class AdminController extends Controller
             $admin->nom = $request->input('nom');
             $admin->prenom = $request->input('prenom');
             $admin->email = $request->input('email');
-            $admin->password = $request->input('password');
-            $telephone->password = $request->input('telephone');
+            $admin->password =Hash::make($request['password']);
+            $admin->telephone = $request->input('telephone');
             $admin->saveOrFail();
             return response()->json($admin, Response::HTTP_OK);
         }
@@ -82,7 +85,7 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        //
+      
     }
 
     /**
@@ -94,7 +97,30 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'nom'=>['required'],
+            'prenom'=>['required'],
+            'email'=>['required'],
+            'password'=>['required'],
+            'telephone'=>['required'],
+        ]);
+
+        $admin = admin::findOrFail($id);
+
+
+        $nom=$request['nom'];
+        $prenom=$request['prenom'];
+        $email=$request['email'];
+        $password=Hash::make($request['password']);
+        $telephone = $request['telephone'];
+
+        $admin->nom = $nom;
+        $admin->prenom = $prenom;
+        $admin->email = $email;
+        $admin->password = $password;
+        $admin->telephone = $telephone;
+        $admin->saveOrFail();
+        return response()->json($admin, Response::HTTP_OK);
     }
 
     /**
@@ -105,6 +131,8 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $admin=admin::findOrFail($id);
+        $admin=admin::where('id','=',$id)->delete();
+        return response()->json($admin,200);
     }
 }
