@@ -25,6 +25,7 @@ Route::apiResource('categorie','Category\CategoryController');
 Route::apiResource('pays','PaysController');
 Route::apiResource('ville','villeController');
 Route::apiResource('marriage','marriageController');
+Route::apiResource('admin','Admin\AdminController');
 /* Sous-Categories */
 Route::apiResource('sous_categorie','Category\Sous_CategoryController');
 /* contact peronne (prestataire) */
