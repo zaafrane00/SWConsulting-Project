@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ville;
+use App\user;
 class villeController extends Controller
 {
     /**
@@ -82,7 +83,20 @@ class villeController extends Controller
      */
     public function destroy($id)
     {
-        $ville=ville::where('id',$id)->delete();
-        return 'deleted';
+        $ville=ville::findOrFail($id);
+        $user=user::where('idville','=',$id)->get();
+
+        if(count($user)>0)
+        {
+            return response()->json($ville,406);
+        }
+
+        else{
+
+        $pays=pays::where('id','=',$id)->delete();
+
+        return response()->json($ville,200);
     }
+    }
+    
 }

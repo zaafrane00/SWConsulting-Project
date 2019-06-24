@@ -26,12 +26,20 @@ Route::apiResource('pays','PaysController');
 Route::apiResource('ville','villeController');
 Route::apiResource('marriage','marriageController');
 Route::apiResource('admin','Admin\AdminController');
+Route::apiResource('message','Message\MessageController');
+Route::apiResource('evenement','Evenement\EvenementController');
+Route::apiResource('galerie','Image\GalerieVideoController');
+Route::apiResource('galeriephoto','Image\GaleriePhotoController');
+Route::apiResource('vedio','Image\VideoController');
+Route::apiResource('photo','Image\PhotoController');
 /* Sous-Categories */
 Route::apiResource('sous_categorie','Category\Sous_CategoryController');
 /* contact peronne (prestataire) */
 Route::apiResource('contact_prestataire','Prestataire\ContactprestataireController');
+Route::apiResource('liste_promotion','Prestataire\ListePromotionsController');
 /* Prestatire */
 Route::apiResource('prestataire','Prestataire\PrestataireController');
+Route::apiResource('avis','Avis\AvisController');
 
 
 
