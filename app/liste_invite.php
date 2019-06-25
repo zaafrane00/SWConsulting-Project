@@ -9,7 +9,7 @@ class liste_invite extends Model
 {
     protected $table = 'liste_invite';
     protected $fillable = [
-        'name', 'prenom', 'email','telephone'
+        'name', 'prenom', 'email','telephone','idmarriage','idcouple'
     ];
 
    

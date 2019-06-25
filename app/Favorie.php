@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Favorie extends Model
 {
+    protected $table = 'favories';
     protected $fillable = [
-        'id_user','id_prestataire'
+       'id','id_user','id_prestataire'
    ];
 
 

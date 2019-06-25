@@ -16,7 +16,8 @@ class ListePromotionsController extends Controller
      */
     public function index()
     {
-        //
+        $liste_promotion = listePromotions::all();
+        return response()->json($liste_promotion);
     }
 
     /**

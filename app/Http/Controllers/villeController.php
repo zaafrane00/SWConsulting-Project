@@ -72,7 +72,7 @@ class villeController extends Controller
         $ville->nom=$nom;
 
         $ville->saveOrFail();
-        return 'saved'  ;
+        return  response()->json($ville, Response::HTTP_OK);  
     }
 
     /**
