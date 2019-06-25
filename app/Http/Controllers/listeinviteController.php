@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\liste_invite;
 
-class listinviteController extends Controller
+class listeinviteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,19 +26,7 @@ class listinviteController extends Controller
      */
     public function create()
     {
-        $this->validate($request,[
-            'nom'=>['required'],
-            'prenom'=>['required'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'telephone'=>['required'],
-                       ]);
-           // save in DB
-           $pays  = new pays();
-           $pays->nom = $request->input('nom');
-           $ville->nom = $request->input('prenom');
-
-           $pays->saveOrFail();
-           return 'saved' ;
+      
     }
 
     /**
@@ -48,7 +37,25 @@ class listinviteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'nom'=>['required'],
+            'prenom'=>['required'],
+            'telephone'=>['required'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'idcouple'=>['required'],
+            'idmarriage'=>['required'],
+                       ]);
+           // save in DB
+           $liste_invite  = new liste_invite();
+           $liste_invite->nom = $request->input('nom');
+           $liste_invite->prenom = $request->input('prenom');
+           $liste_invite->email = $request->input('email');
+           $liste_invite->telephone = $request->input('telephone');
+           $liste_invite->idcouple = $request->input('idcouple');
+           $liste_invite->idmarriage = $request->input('idmarriage');
+
+           $liste_invite->saveOrFail();
+           return response()->json($liste_invite, Response::HTTP_OK);
     }
 
     /**
@@ -82,7 +89,34 @@ class listinviteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'nom'=>['required'],
+            'prenom'=>['required'],
+            'telephone'=>['required'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'idcouple'=>['required'],
+            'idmarriage'=>['required'],
+                       ]);
+    
+            $liste_invite = liste_invite::findOrFail($id);
+    
+    
+            $nom=$request['nom'];
+            $prenom=$request['prenom'];
+            $email=$request['email'];
+            $telephone=$request['telephone'];
+            $idcouple=$request['idcouple'];
+            $idmarriage=$request['idmarriage'];
+    
+            $liste_invite->nom = $request->input('nom');
+            $liste_invite->prenom = $request->input('prenom');
+            $liste_invite->email = $request->input('email');
+            $liste_invite->telephone = $request->input('telephone');
+            $liste_invite->idcouple = $request->input('idcouple');
+            $liste_invite->idmarriage = $request->input('idmarriage');
+ 
+            $liste_invite->saveOrFail();
+            return response()->json($liste_invite, Response::HTTP_OK); 
     }
 
     /**
@@ -93,6 +127,8 @@ class listinviteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $liste_invite = liste_invite::findOrFail($id);
+        $deleted =  $liste_invite->delete();
+        return response()->json($liste_invite, Response::HTTP_OK); 
     }
 }
