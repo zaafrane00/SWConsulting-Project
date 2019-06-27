@@ -19,9 +19,11 @@ class User extends Authenticatable
     
        const NAME_COUPLE='couple';
        const NAME_PRESTATAIRE='prestataire';
+       const NAME_ADMIN='admin';
        const role=[
         self :: NAME_COUPLE,
-        self :: NAME_PRESTATAIRE
+        self :: NAME_PRESTATAIRE,
+        self :: NAME_ADMIN
        ];
   
     protected $fillable = [

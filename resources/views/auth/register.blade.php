@@ -61,28 +61,28 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('isactive') }}</label>
 
                             <div class="col-md-6">
                                 <input id="isactive" type="text" class="form-control @error('name') is-invalid @enderror" name="isactive" value="{{ old('name') }}" required autocomplete="name" autofocus>
 </div>
 </div>
 <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('image') }}</label>
 
                             <div class="col-md-6">
                                 <input id="image" type="text" class="form-control @error('name') is-invalid @enderror" name="image" value="{{ old('name') }}" required autocomplete="name" autofocus>
 </div>
 </div>
 <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('idville') }}</label>
 
                             <div class="col-md-6">
                                 <input id="idville" type="text" class="form-control @error('name') is-invalid @enderror" name="idville" value="{{ old('name') }}" required autocomplete="name" autofocus>
 </div>
 </div>
 <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('role') }}</label>
 
                             <div class="col-md-6">
                                 <input id="role" type="text" class="form-control @error('name') is-invalid @enderror" name="role" value="{{ old('name') }}" required autocomplete="name" autofocus>

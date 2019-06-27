@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use  Illuminate\Support\Facades\Auth;
 use App\pays;
 use App\ville;
-
+use App\user;
 class PaysController extends Controller
 {
     /**
@@ -39,14 +40,27 @@ class PaysController extends Controller
     public function store(Request $request)
     {
         {
+            $userConncter =Auth::user();
+      
+     if((Auth::user()->role)=="admin" )
+            {
             $this->validate($request,[
              'nom'=>['required'],
+             'isactive'=>['required'],
+             'icone'=>['required'],
+             
                         ]);
             // save in DB
             $pays  = new pays();
             $pays->nom = $request->input('nom');
+            $pays->isactive = $request->input('isactive');
+            $pays->icone = $request->input('icone');
             $pays->saveOrFail();
-            return response()->json($pays, Response::HTTP_OK);
+           return response()->json($pays, Response::HTTP_OK);}
+
+           else {
+           return 'non';}
+
         }
     }
 
@@ -81,19 +95,40 @@ class PaysController extends Controller
      */
     public function update(Request $request, $id)
     {
+  
+        $userConncter =Auth::user();
+      
+        if((Auth::user()->role)=="admin" )
+               {
+    
         $this->validate($request,[
         'nom'=>['required',/*Rule::in(Categorie::NAMES)*/],
+        'isactive'=>['required'],
+        'icone'=>['required'],
+   
         ]);
 
         $pays = pays::findOrFail($id);
 
 
         $nom=$request['nom'];
+        $isactive=$request['isactive'];
+        $icone=$request['icone'];
 
         $pays->nom=$nom;
+        $pays->isactive=$isactive;
+        $pays->icone=$icone;
 
         $pays->saveOrFail();
-        return 'saved'  ;
+      
+        return response()->json($pays, Response::HTTP_OK);
+    }
+
+
+        else {
+        return 'non';}
+    
+    
     }
 
     /**
@@ -104,12 +139,14 @@ class PaysController extends Controller
      */
     public function destroy($id)
     {
+                  if((Auth::user()->role)=="admin" )
+                    {
          $s_pays=pays::findOrFail($id);
         $s_ville=ville::where('idpays','=',$id)->get();
 
         if(count($s_ville)>0)
         {
-            return response()->json($s_pays,406);
+                 return response()->json($s_pays,406);
         }
 
         else{
@@ -117,6 +154,10 @@ class PaysController extends Controller
         $pays=pays::where('id','=',$id)->delete();
 
         return response()->json($s_pays,200);
-    }
+        }
+            }   else
+            {
+                    return 'non';
+            }
     }
 }
