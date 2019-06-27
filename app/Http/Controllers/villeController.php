@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ville;
+use Illuminate\Http\Response;
 use App\user;
 class villeController extends Controller
 {
@@ -39,14 +40,18 @@ class villeController extends Controller
         $this->validate($request,[
             'nom'=>['required'],
             'idpays'=>['required'],
+            'isactive'=>['required'],
+            'idgev'=>['required'],
                        ]);
            // save in DB
            $ville  = new ville();
            $ville->nom = $request->input('nom');
            $ville->idpays = $request->input('idpays');
+           $ville->isactive = $request->input('isactive');
+           $ville->idgev = $request->input('idgev');
 
            $ville->saveOrFail();
-           return 'saved' ;
+           return response()->json($ville, Response::HTTP_OK);
     }
 
 
@@ -62,14 +67,23 @@ class villeController extends Controller
     {
         $this->validate($request,[
         'nom'=>['required'],
+        'isactive'=>['required'],
+        'idpays'=>['required'],
+        'idgev'=>['required'],
         ]);
 
         $ville = ville::findOrFail($id);
 
 
         $nom=$request['nom'];
+        $isactive=$request['isactive'];
+        $idpays=$request['idpays'];
+        $idgev=$request['idgev'];
 
         $ville->nom=$nom;
+        $ville->isactive=$isactive;
+        $ville->idpays=$idpays;
+        $ville->idgev=$idgev;
 
         $ville->saveOrFail();
         return  response()->json($ville, Response::HTTP_OK);  

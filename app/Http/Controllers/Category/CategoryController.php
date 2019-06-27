@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Validation\Rule;
 use App\Sous_Categorie;
+use  Illuminate\Support\Facades\Auth;
+use App\user;
 use App\Categorie;
 class CategoryController extends Controller
 {
@@ -31,6 +33,10 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $userConncter =Auth::user();
+      
+        if((Auth::user()->role)=="admin" )
+               {
         $this->validate($request,[
         'nom'=>['required',/*Rule::in(Categorie::NAMES)*/],
          'icon'=>['required']
@@ -48,9 +54,13 @@ class CategoryController extends Controller
         //$category->nom = $request->input('nom');
         //$category->icon = $request->input('icon');
         $category->saveOrFail();
-        return response()->json($category,201);
+           return response()->json($category,201);
+
+             }
 
 
+        else {
+             return 'non';}
         //if($category->save()){}
 
 
@@ -69,6 +79,10 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
+       // $userConncter =Auth::user();
+      
+        if((Auth::user()->role)=="admin" )
+               {
         $this->validate($request,[
         'nom'=>['required',/*Rule::in(Categorie::NAMES)*/],
          'icon'=>['required']
@@ -85,9 +99,10 @@ class CategoryController extends Controller
         $category->icon=$icon;
 
         $category->saveOrFail();
-        return response()->json($category,202);
+        return response()->json($category,202);}
 
-
+        else {
+            return 'non';}
     }
 
     /**

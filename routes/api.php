@@ -21,10 +21,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('get-token','TokenController@getToken');
 
 /* Categories */
-Route::apiResource('categorie','Category\CategoryController');
+
 Route::apiResource('fichieinformation','Category\FichierinformationController');
 Route::apiResource('informationspecifique','Category\InformationspecifiqueController');
-Route::apiResource('pays','PaysController');
+
 Route::apiResource('ville','villeController');
 Route::apiResource('marriage','marriageController');
 Route::apiResource('admin','Admin\AdminController');
@@ -35,6 +35,13 @@ Route::apiResource('galeriephoto','Image\GaleriePhotoController');
 Route::apiResource('vedio','Image\VideoController');
 Route::apiResource('photo','Image\PhotoController');
 Route::apiResource('liste_invite','listeinviteController');
+Route::middleware(['auth:api'])->group(function(){
+    Route::apiResource('test','TestController');
+    Route::apiResource('pays','PaysController');
+    Route::apiResource('categorie','Category\CategoryController');
+    Route::apiResource('Gouvernement','lieux\GouvernementController');
+});
+
 /* Sous-Categories */
 Route::apiResource('sous_categorie','Category\Sous_CategoryController');
 /* contact peronne (prestataire) */

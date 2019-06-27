@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVillesTable extends Migration
+class Ville extends Migration
 {
     /**
      * Run the migrations.
@@ -18,6 +18,8 @@ class CreateVillesTable extends Migration
             $table->String('nom');
             $table->bigInteger('idpays')->unsigned();
             $table->foreign('idpays')->references('id')->on('pays')->onDelete('cascade');
+            $table->bigInteger('idgev')->unsigned();
+            $table->foreign('idgev')->references('id')->on('gouvernement')->onDelete('cascade');
 
             $table->timestamps();
         });
@@ -30,6 +32,6 @@ class CreateVillesTable extends Migration
      */
     public function down()
     {
-      //  Schema::dropIfExists('ville');
+        Schema::dropIfExists('ville');
     }
 }
