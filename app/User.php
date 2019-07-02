@@ -15,7 +15,7 @@ class User extends Authenticatable
      * The attributes that are mass assignable.
      *
      * @var array
-     */
+     */ protected $table = 'users';
     
        const NAME_COUPLE='couple';
        const NAME_PRESTATAIRE='prestataire';
