@@ -34,7 +34,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $userConncter =Auth::user();
-      
+
         if((Auth::user()->role)=="admin" )
                {
         $this->validate($request,[
@@ -80,7 +80,7 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
        // $userConncter =Auth::user();
-      
+
         if((Auth::user()->role)=="admin" )
                {
         $this->validate($request,[

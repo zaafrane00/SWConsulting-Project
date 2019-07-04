@@ -19,8 +19,8 @@ class TokenController extends Controller
 $response = $http->post('http://dev.marriage/oauth/token', [
     'form_params' => [
         'grant_type' => 'password',
-        'client_id' => '3',
-        'client_secret' => '4P9I2p6pN56EWyScbRbZ3ivu8QraA95nSI8N8q3K',
+        'client_id' => '8',
+        'client_secret' => 'zHgZIZiyFOK4VZ1kqWaodWu0yvea542vw9FsTdnI',
         'username' => $request->input('user_name'),
         'password' =>  $request->input('password'),
         'scope' => '*',

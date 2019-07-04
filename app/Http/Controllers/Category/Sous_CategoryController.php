@@ -19,7 +19,7 @@ class Sous_CategoryController extends Controller
         return response()->json($s_category);
     }
 
-    
+
     /**
      * Store a newly created resource in storage.
      *
@@ -37,10 +37,10 @@ class Sous_CategoryController extends Controller
        $nom=$request['nom'];
        $idcategorie=$request['idcategorie'];
        $icon=$request['icon'];
-     
 
 
-        // save in DB 
+
+        // save in DB
         $s_category  = new Sous_Categorie([
             'nom'=>$nom,
             'id_categorie'=>$idcategorie,
@@ -50,7 +50,7 @@ class Sous_CategoryController extends Controller
         //$category->icon = $request->input('icon');
         $s_category->saveOrFail();
         return 'saved'  ;
-         
+
     }
 
 
@@ -75,9 +75,9 @@ class Sous_CategoryController extends Controller
         $nom=$request['nom'];
         $idcategorie=$request['idcategorie'];
         $icon=$request['icon'];
-     
+
         $s_category->nom=$nom;
-        $s_category->id_categorie=$idcategorie;        
+        $s_category->id_categorie=$idcategorie;
         $s_category->icon=$icon;
 
 
