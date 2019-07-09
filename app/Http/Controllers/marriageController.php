@@ -105,6 +105,7 @@ class marriageController extends Controller
         $description=$request['description'];
         $date_marriage=$request['date_marriage'];
         $id_lieu=$request['id_lieu'];
+        
         $marriage->id_user = $id_user;
         $marriage->description = $description;
         $marriage->date_marriage = $date_marriage;

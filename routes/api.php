@@ -32,8 +32,9 @@ Route::apiResource('message','Message\MessageController');
 Route::apiResource('evenement','Evenement\EvenementController');
 Route::apiResource('galerie','Image\GalerieVideoController');
 Route::apiResource('galeriephoto','Image\GaleriePhotoController');
-Route::apiResource('vedio','Image\VideoController');
+Route::apiResource('video','Image\VideoController');
 Route::apiResource('photo','Image\PhotoController');
+Route::apiResource('user','Couple\UserController');
 Route::apiResource('liste_invite','listeinviteController');
 Route::middleware(['auth:api'])->group(function(){
     Route::apiResource('test','TestController');
