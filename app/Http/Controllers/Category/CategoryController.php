@@ -25,6 +25,7 @@ class CategoryController extends Controller
 
 
 
+
     /**
      * Store a newly created resource in storage.
      *
@@ -41,6 +42,7 @@ class CategoryController extends Controller
         'nom'=>['required',/*Rule::in(Categorie::NAMES)*/],
          'icon'=>['required']
         ]);
+
 
        $nom=$request['nom'];
        $icon=$request['icon'];
@@ -102,7 +104,7 @@ class CategoryController extends Controller
         return response()->json($category,202);}
 
         else {
-            return 'non';}
+            return response()->json($category,400);}
     }
 
     /**
@@ -114,6 +116,7 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         //$category = Categorie::findOrFail($id);
+         if((Auth::user()->role)=="admin" ){
         $s_category = Sous_Categorie::where('id_categorie','=',$id)->get();
         if(count($s_category)){
             return response()->json($category,406);
@@ -123,6 +126,7 @@ class CategoryController extends Controller
         $category->delete();
          return response()->json($category,200);
          }
-
+        }
+        else{ return response()->json($category,406);}
     }
 }

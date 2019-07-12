@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Ville extends Migration
+class Governorate extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class Ville extends Migration
      */
     public function up()
     {
-        Schema::create('ville', function (Blueprint $table) {
+        Schema::create('governorate', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->String('nom');
+            $table->integer('code_postal');
             $table->bigInteger('idpays')->unsigned();
             $table->foreign('idpays')->references('id')->on('pays')->onDelete('cascade');
-            $table->bigInteger('idgev')->unsigned();
-            $table->foreign('idgev')->references('id')->on('gouvernement')->onDelete('cascade');
-
+            $table->Integer('isactive');
             $table->timestamps();
         });
     }
@@ -32,6 +31,9 @@ class Ville extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ville');
-    }
+        Schema::table('governorate', function (Blueprint $table) {
+            Schema::dropIfExists('governorate');
+        });
+        }
+
 }

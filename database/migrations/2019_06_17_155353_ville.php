@@ -16,11 +16,10 @@ class Ville extends Migration
         Schema::create('ville', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->String('nom');
-            $table->bigInteger('idpays')->unsigned();
-            $table->foreign('idpays')->references('id')->on('pays')->onDelete('cascade');
-            $table->bigInteger('idgev')->unsigned();
-            $table->foreign('idgev')->references('id')->on('gouvernement')->onDelete('cascade');
 
+            $table->bigInteger('idgev')->unsigned();
+            $table->foreign('idgev')->references('id')->on('governorate')->onDelete('cascade');
+            $table->Integer('isactive');
             $table->timestamps();
         });
     }

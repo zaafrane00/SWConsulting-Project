@@ -49,7 +49,8 @@ class Sous_CategoryController extends Controller
         //$category->nom = $request->input('nom');
         //$category->icon = $request->input('icon');
         $s_category->saveOrFail();
-        return 'saved'  ;
+         return response()->json($s_category);
+
 
     }
 
@@ -82,7 +83,7 @@ class Sous_CategoryController extends Controller
 
 
         $s_category->saveOrFail();
-        return 'saved'  ;
+      return response()->json($s_category);
 
     }
 
@@ -95,6 +96,6 @@ class Sous_CategoryController extends Controller
     public function destroy($id)
     {
         $s_category=Sous_Categorie::where('id_sous_categorie',$id)->delete();
-        return 'deleted';
+        return response()->json($s_category);
     }
 }

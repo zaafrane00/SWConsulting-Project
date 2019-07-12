@@ -7,10 +7,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
 use  Illuminate\Support\Facades\Auth;
 use App\ville;
-use App\Gouvernement;
+use App\Governorate;
 use App\user;
 
-class GouvernementController extends Controller
+class GovernorateController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,7 +19,7 @@ class GouvernementController extends Controller
      */
     public function index()
     {
-        $Gouvernement = Gouvernement::all();
+        $Gouvernement = Governorate::all();
         return response()->json($Gouvernement);
     }
 
@@ -42,7 +42,7 @@ class GouvernementController extends Controller
     public function store(Request $request)
     {
         $userConncter =Auth::user();
-      
+
         if((Auth::user()->role)=="admin" )
                {
                $this->validate($request,[
@@ -50,20 +50,20 @@ class GouvernementController extends Controller
                 'code_postal'=>['required'],
                 'idpays'=>['required'],
                 'isactive'=>['required'],
-                
+
                            ]);
-                           
+
                            // save in DB
-                           $Gouvernement  = new Gouvernement();
+                           $Gouvernement  = new Governorate();
                            $Gouvernement->nom = $request->input('nom');
                            $Gouvernement->code_postal = $request->input('code_postal');
                            $Gouvernement->idpays = $request->input('idpays');
                            $Gouvernement->isactive = $request->input('isactive');
                            $Gouvernement->saveOrFail();
                           return response()->json($Gouvernement, Response::HTTP_OK);}
-   
+
               else {
-              return 'non';}
+            return response()->json($Gouvernement,400);}
     }
 
     /**
@@ -98,10 +98,10 @@ class GouvernementController extends Controller
     public function update(Request $request, $id)
     {
         $userConncter =Auth::user();
-      
+
         if((Auth::user()->role)=="admin" )
                {
-    
+
                 $this->validate($request,[
                     'nom'=>['required'],
                     'code_postal'=>['required'],
@@ -109,13 +109,13 @@ class GouvernementController extends Controller
                     'isactive'=>['required'],
                                ]);
 
-        $Gouvernement = Gouvernement::findOrFail($id);
+        $Gouvernement = Governorate::findOrFail($id);
 
 
         $nom=$request['nom'];
-        
+
         $code_postal=$request['code_postal'];
-        
+
         $idpays=$request['idpays'];
         $isactive=$request['isactive'];
 
@@ -125,12 +125,12 @@ class GouvernementController extends Controller
                            $Gouvernement->isactive = $request->input('isactive');
                            $Gouvernement->saveOrFail();
        return response()->json($Gouvernement, Response::HTTP_OK);}
-       
-    
+
+
 
 
         else {
-        return 'non';}
+       return response()->json($Gouvernement,400);}
     }
 
     /**
@@ -142,24 +142,19 @@ class GouvernementController extends Controller
     public function destroy($id)
     {
        if((Auth::user()->role)=="admin" )
-                    {
-         $Gouvernement=Gouvernement::findOrFail($id);
-        $s_ville=ville::where('idgev','=',$id)->get();
+             {
+                $Gouvernement=Governorate::findOrFail($id);
+                $s_ville=ville::where('idgev','=',$id)->get();
 
-        if(count($s_ville)>0)
-        {
-                 return response()->json($Gouvernement,406);
-        }
-
-        else{
-
-        $Gouvernement=Gouvernement::where('id','=',$id)->delete();
-
-        return response()->json($Gouvernement,200);
-        }
+                if(count($s_ville))
+                    return response()->json($Gouvernement,406);
+                else{
+                $Gouvernement=Governorate::where('id','=',$id)->delete();
+                return response()->json($Gouvernement,200);
+                }
             }   else
-            {
-                    return 'non';
-            }
+                    {
+                        return response()->json($Gouvernement,400);
+                    }
     }
 }

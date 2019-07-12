@@ -41,14 +41,14 @@ class PaysController extends Controller
     {
         {
             $userConncter =Auth::user();
-      
+
      if((Auth::user()->role)=="admin" )
             {
             $this->validate($request,[
              'nom'=>['required'],
              'isactive'=>['required'],
              'icone'=>['required'],
-             
+
                         ]);
             // save in DB
             $pays  = new pays();
@@ -95,17 +95,17 @@ class PaysController extends Controller
      */
     public function update(Request $request, $id)
     {
-  
+
         $userConncter =Auth::user();
-      
+
         if((Auth::user()->role)=="admin" )
                {
-    
+
         $this->validate($request,[
         'nom'=>['required',/*Rule::in(Categorie::NAMES)*/],
         'isactive'=>['required'],
         'icone'=>['required'],
-   
+
         ]);
 
         $pays = pays::findOrFail($id);
@@ -120,15 +120,15 @@ class PaysController extends Controller
         $pays->icone=$icone;
 
         $pays->saveOrFail();
-      
-        return response()->json($pays, Response::HTTP_OK);
+
+        return response()->json($pays, 200);
     }
 
 
         else {
         return 'non';}
-    
-    
+
+
     }
 
     /**
@@ -142,7 +142,7 @@ class PaysController extends Controller
                   if((Auth::user()->role)=="admin" )
                     {
          $s_pays=pays::findOrFail($id);
-        $s_ville=ville::where('idpays','=',$id)->get();
+        $s_ville=ville::where('idgev','=',$id)->get();
 
         if(count($s_ville)>0)
         {
@@ -157,7 +157,7 @@ class PaysController extends Controller
         }
             }   else
             {
-                    return 'non';
+                   return response()->json($pays, 406);
             }
     }
 }
